@@ -5,7 +5,7 @@ from sklearn import cross_validation
 from sklearn.metrics import mean_squared_error
 from sklearn.ensemble import GradientBoostingRegressor
 
-train = pd.read_table('data/train_20171215.txt', engine='python')
+train = pd.read_table('../data/train_20171215.txt', engine='python')
 train.describe()
 
 actions1 = train.groupby(['date', 'day_of_week'], as_index=False)['cnt'].agg({'count1': np.sum})
