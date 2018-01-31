@@ -1,11 +1,13 @@
 import pandas as pd
 import numpy as np
+import os
 
 from sklearn import cross_validation
 from sklearn.metrics import mean_squared_error
 from sklearn.ensemble import GradientBoostingRegressor
-
-train = pd.read_table('../data/train_20171215.txt', engine='python')
+abs_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+train_file_relative_path = '/data/train_20171215.txt'
+train = pd.read_table(abs_path + train_file_relative_path, engine='python')
 train.describe()
 
 actions1 = train.groupby(['date', 'day_of_week'], as_index=False)['cnt'].agg({'count1': np.sum})
